@@ -248,10 +248,27 @@ figure { margin: 0; }
   .footer-inner p { order: 3; width: 100%; margin: 3px 0 0; }
   .footer-right { gap: 12px; font-size: 7px; }
 }
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  [data-aos] { opacity: 1 !important; transform: none !important; }
+/* Native CSS scroll reveal. Browsers without view-timeline support keep content visible. */
+.scroll-reveal { opacity: 1; }
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll-reveal {
+      animation: reveal-on-scroll linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+    @keyframes reveal-on-scroll {
+      from { opacity: 0; translate: 0 1rem; }
+      to { opacity: 1; translate: 0 0; }
+    }
+  }
 }
-
-/* Fallback: keep content visible when the AOS script cannot load. */
-html:not(.aos-enabled) [data-aos] { opacity: 1 !important; transform: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+  .scroll-reveal { opacity: 1 !important; translate: none !important; }
+}
