@@ -1,7 +1,7 @@
 # NHẬT KÝ PROMPT ENGINEERING (VIBE CODING LOG)
 
 - **Họ và tên:** Trần Trương Duy Nghĩa
-- **MSSV:** BỔ SUNG MSSV TRƯỚC KHI NỘP
+- **MSSV:** 125000902
 - **Tên đề tài Website:** Portfolio cá nhân
 - **Công cụ AI đã sử dụng:** ChatGPT
 
